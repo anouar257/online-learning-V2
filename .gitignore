@@ -1,0 +1,5 @@
+# Project exclude paths
+/cours-service/target/
+/eureka-server/target/
+/inscription-service/target/
+/statistique-service/target/
