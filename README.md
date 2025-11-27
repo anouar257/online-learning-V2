@@ -2,40 +2,6 @@
 
 Ce projet est une plateforme d'apprentissage en ligne basée sur une architecture microservices avec Spring Boot et Spring Cloud.
 
-## 🏗️ Architecture & Ports
-
-Voici un schéma global de l'architecture avec les ports utilisés par chaque service.
-
-```mermaid
-graph TD
-    User((Utilisateur))
-    
-    subgraph Infrastructure
-        Eureka[Eureka Server<br/>Port: 8761]
-    end
-    
-    subgraph Microservices
-        Cours[Cours Service<br/>Port: 8081<br/>(H2 DB)]
-        Inscription[Inscription Service<br/>Port: 8082]
-        Stats[Statistique Service<br/>Port: 8083]
-    end
-    
-    subgraph External
-        YouTube[YouTube API]
-    end
-
-    %% Connexions
-    Cours -->|Enregistrement| Eureka
-    Inscription -->|Enregistrement| Eureka
-    Stats -->|Enregistrement| Eureka
-    
-    Inscription -->|Feign Client /cours| Cours
-    Stats -->|WebClient| YouTube
-    
-    User -->|HTTP| Inscription
-    User -->|HTTP| Stats
-    User -->|HTTP| Cours
-```
 
 ## 🧩 Diagramme de Classes / Composants
 
